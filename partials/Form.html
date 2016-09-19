@@ -1,0 +1,46 @@
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+<form name="registrationForm" ng-submit="formValidate(registrationForm.$valid)" novalidate>
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : registrationForm.fname.$invalid && !registrationForm.fname.$pristine, 'has-success has-feedback' : registrationForm.fname.$valid  && !registrationForm.fname.$pristine}">
+    <label for="name">First Name</label>
+    <input type="text" class="form-control" name="fname" id="fname" ng-model="fname" placeholder="Firstname" required>
+   <p ng-show="registrationForm.fname.$invalid && !registrationForm.fname.$pristine" class="help-block">Please Enter FirstName</p>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : registrationForm.lname.$invalid && !registrationForm.lname.$pristine, 'has-success has-feedback' : registrationForm.lname.$valid  && !registrationForm.lname.$pristine}">
+    <label for="name">Last Name</label>
+    <input type="text" class="form-control" name="lname" id="lname" ng-model="lname" placeholder="Lastname" required>
+     <p ng-show="registrationForm.lname.$invalid && !registrationForm.lname.$pristine" class="help-block">Please Enter LastName</p>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : registrationForm.user.$invalid && !registrationForm.user.$pristine, 'has-success has-feedback' : registrationForm.user.$valid  && !registrationForm.user.$pristine}">
+    <label for="name">Username</label>
+    <input type="text" class="form-control" name="user" id="user" ng-model="username"  placeholder="Username" required>
+    <p ng-show="registrationForm.user.$invalid && !registrationForm.user.$pristine" class="help-block">Please Enter Username</p>
+  </div>
+
+   <div class="form-group" ng-class="{ 'has-error has-feedback' : registrationForm.email.$invalid && !registrationForm.email.$pristine, 'has-success has-feedback' : registrationForm.email.$valid  && !registrationForm.email.$pristine}">
+    <label for="name">Email</label>
+    <input type="text" class="form-control" name="email" id="email" ng-model="email" ng-pattern="emailFormat"  placeholder="Email"  validate-remote required>
+    <p ng-show="registrationForm.email.$error.required && !registrationForm.email.$pristine" class="help-block">Please Enter Email</p>
+    <p ng-show="registrationForm.email.$error.pattern && !registrationForm.email.$pristine " class="help-block">Please Enter Valid Email</p>
+    <p ng-show="registrationForm.$error.remote" class="help-block">Email exists</p>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : registrationForm.pass.$invalid && !registrationForm.pass.$pristine, 'has-success has-feedback' : registrationForm.pass.$valid  && !registrationForm.pass.$pristine}">
+    <label for="name">Password</label>
+    <input type="password" class="form-control" name="pass" id="pass" ng-model="password" ng-minlength="5" ng-maxlength="10" placeholder="Password" required>
+     <p ng-show="registrationForm.pass.$error.required && !registrationForm.pass.$pristine" class="help-block">Please Enter Your Password</p>
+    <p ng-show="registrationForm.pass.$error.minlength" class="help-block">Password is too short.</p>
+    <p ng-show="registrationForm.pass.$error.maxlength" class="help-block">Password is too long.</p>
+  </div>
+
+  <button type="submit" class="btn btn-primary" ng-disabled="registrationForm.$invalid">Submit</button>
+<div>{{ registrationForm.email }} </div>
+</form>
+
+</div>
+</div>
+</div>
